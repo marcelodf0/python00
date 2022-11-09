@@ -26,20 +26,18 @@ choco install vscode
 choco install git --package-parameters="/NoAutoCrlf /NoShellIntegration"
 choco install pyenv-win
 
-# The Google Chrome package often gets out of sync because it updates so
-# frequently. Ignoring checksums is a way to force install it.
+### The Google Chrome package often gets out of sync because it updates so frequently. 
+### Ignoring checksums is a way to force install it.
 choco install googlechrome --ignore-checksums
-# Google Chrome auto-updates so you can pin it to prevent Chocolatey from
-# trying to upgrade it and inadvertently downgrading it.
-# You could also add VS Code here if you like.
+### Google Chrome auto-updates so you can pin it to prevent Chocolatey from trying to upgrade it and inadvertently downgrading it.
+### You could also add VS Code here if you like.
 choco pin add -n googlechrome
 
 refreshenv
 
-# The refreshenv command usually doesn't work on first install.
-# This is a way to make sure that the Path gets updated for the following
-# operations that require Path to be refreshed.
-# Source: https://stackoverflow.com/a/22670892/10445017
+### The refreshenv command usually doesn't work on first install.
+### This is a way to make sure that the Path gets updated for the following operations that require Path to be refreshed.
+### Source: https://stackoverflow.com/a/22670892/10445017
 foreach ($level in "Machine", "User") {
     [Environment]::GetEnvironmentVariables($level).GetEnumerator() |
     ForEach-Object {
